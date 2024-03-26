@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -19,15 +20,9 @@ namespace _Source.Core
       UpdateText(valueToUpdate);
     }
 
-    private void UpdateText(int value)
+    public void UpdateText(int value)
     {
       _text.text = value.ToString();
-    }
-
-    public void ButtonClick()
-    {
-      _resourceBankVisual.GetResource(_gameResource).Value++;
-      UpdateText(_resourceBankVisual.GetResource(_gameResource).Value);
     }
   }
 }
