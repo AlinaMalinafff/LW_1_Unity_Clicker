@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using _Source.Core;
+using UnityEngine.Serialization;
 
-public class GameManager : MonoBehaviour
+namespace _Source.Core
 {
-    // Start is called before the first frame update
-    void Start()
+  public class GameManager : MonoBehaviour
+  {
+    public ResourceBank _resourceBank;
+    public void Awake()
     {
-        
+      _resourceBank.ChangeResource(GameResource.Humans, 10);
+      _resourceBank.ChangeResource(GameResource.Food, 5);
+      _resourceBank.ChangeResource(GameResource.Wood, 5);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  }
 }

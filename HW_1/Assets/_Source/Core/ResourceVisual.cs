@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class ResourceVisual : MonoBehaviour
+namespace _Source.Core
 {
-    // Start is called before the first frame update
+  public class ResourceVisual : MonoBehaviour
+  {
+    private GameManager _game;
+    public GameResource _gameResource;
+    public TextMeshProUGUI _text;
+    public ResourceBank _resourceBankVisual;
+
     void Start()
     {
-        
+      int valueToUpdate = _resourceBankVisual.GetResource(_gameResource).Value;
+      _resourceBankVisual.GetResource(_gameResource).OnClick += UpdateText;
+      UpdateText(valueToUpdate);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateText(int value)
     {
-        
+      _text.text = value.ToString();
     }
+
+    public void ButtonClick()
+    {
+      _resourceBankVisual.GetResource(_gameResource).Value++;
+      UpdateText(_resourceBankVisual.GetResource(_gameResource).Value);
+    }
+  }
 }
